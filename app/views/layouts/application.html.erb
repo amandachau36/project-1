@@ -9,7 +9,29 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <h1>Sydney Yoga</h1>
+
+  <nav>
+  <% if @current_user.present? %>
+      Welcome <%= @current_user.name %>
+      |
+      <%= link_to 'Logout', login_path, method: 'delete' %>
+    <% else %>
+      <%= link_to 'Login', login_path %>
+      |
+      <%= link_to 'Create new account', new_user_path %>
+
+  <% end %>
+
+  </nav>
+
+  <hr>
+    <body>
+      <%= yield %>
+    </body>
+  <hr>
+
+  <footer>
+    &copy; Karma Tree Co. 2019
+  </footer>
 </html>
