@@ -18,3 +18,18 @@ User.create name: 'Kayla Bullen', email: 'kb@ga.co', password: 'chicken'
 User.create name: 'Jack Pasco', email: 'jp@ga.co', password: 'chicken'
 
 puts "#{User.all.length} users have been created"
+
+
+Schedule.destroy_all
+
+puts "Seeding schedule table"
+
+Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.new(2019, 6, 21, 17, 00), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.'
+
+Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start:  DateTime.new(2019, 6, 19, 7, 00), description: 'Start your day with gentle movement and a beautiful view.'
+
+Schedule.create title: 'Beach flow', level: 'Intermediate', duration: '50', start:  DateTime.new(2019, 6, 18, 10, 00), description: 'Playing with balance and inversions.'
+
+
+puts "#{Schedule.all.length} schedule items have been created"
+S

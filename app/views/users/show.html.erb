@@ -1,2 +1,15 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2> Account Details</h2>
+
+<%= link_to 'Edit', edit_user_path(@user.id) %>
+|
+<%= link_to 'Delete Account', user_path(@user.id), method: 'delete' %>
+
+<p><strong>Name: </Strong><%= @user.name %></p>
+<p><strong>Email: </Strong><%= @user.email %></p>
+
+<!-- How do I get the correct number of stars show up-->
+<p><strong>Password: </Strong> ***** </p>
+
+<% if @user.image.present?  %>
+  <%= image_tag @user.image  %>
+<% end %>

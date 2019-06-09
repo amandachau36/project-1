@@ -1,11 +1,12 @@
 <h2>Login</h2>
 
-<% if flash[:error] %>
+<% if flash[:error].present? %>
 <br>
 <%= flash[:error] %>
 <br><br>
 <% end %>
 
+<!-- use form_for because session is only a controller not a model -->
 <!-- this will submit POST login_path -->
 <%= form_tag login_path do %>
   <%= label_tag :email  %>

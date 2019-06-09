@@ -13,9 +13,10 @@
 
   <nav>
   <% if @current_user.present? %>
-      Welcome <%= @current_user.name %>
+      Welcome <%= link_to @current_user.name, user_path(@current_user.id) %>
       |
       <%= link_to 'Logout', login_path, method: 'delete' %>
+
     <% else %>
       <%= link_to 'Login', login_path %>
       |
