@@ -1,0 +1,2 @@
+class PersonalSchedule < ApplicationRecord
+end

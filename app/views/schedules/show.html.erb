@@ -1,0 +1,13 @@
+<h2> <%= @schedule.title %> </h2>
+
+<p> <strong><%= @schedule.start.to_formatted_s(:short) %></strong>
+  (<%= @schedule.duration %> min)
+</p>
+
+<p><Strong>Level: </Strong><%= @schedule.level %></p>
+
+<p><%= @schedule.description %></p>
+
+<% if @schedule.image.present?  %>
+  <%= image_tag @schedule.image  %>
+<% end %>

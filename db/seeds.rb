@@ -24,12 +24,11 @@ Schedule.destroy_all
 
 puts "Seeding schedule table"
 
-Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.new(2019, 6, 21, 17, 00), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.'
+Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.strptime('06/21/2019 5:00pm','%m/%d/%Y %I:%M%P'), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.'
 
-Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start:  DateTime.new(2019, 6, 19, 7, 00), description: 'Start your day with gentle movement and a beautiful view.'
+Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start:  DateTime.strptime('06/19/2019 7:00','%m/%d/%Y %H:%M'), description: 'Start your day with gentle movement and a beautiful view.'
 
-Schedule.create title: 'Beach flow', level: 'Intermediate', duration: '50', start:  DateTime.new(2019, 6, 18, 10, 00), description: 'Playing with balance and inversions.'
+Schedule.create title: 'Beach flow', level: 'Intermediate', duration: '50', start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: 'Playing with balance and inversions.'
 
 
 puts "#{Schedule.all.length} schedule items have been created"
-S
