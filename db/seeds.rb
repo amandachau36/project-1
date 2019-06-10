@@ -31,7 +31,7 @@ s2 = Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start
 
 s3 = Schedule.create title: 'Beach Flow', level: 'Intermediate', duration: '50', start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: 'Move to the beat of the ocean. Playing with inversions and balance'
 
-s3 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: '60', start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!'
+s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: '60', start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!'
 
 
 
@@ -46,3 +46,10 @@ ps1 = PersonalSchedule.create user_id: u1.id
 ps2 = PersonalSchedule.create user_id: u2.id
 ps3 = PersonalSchedule.create user_id: u3.id
 ps4 = PersonalSchedule.create user_id: u4.id
+
+# all schedules to personal schedule association
+
+ps1.schedules << s1
+ps2.schedules << s1 << s2
+ps3.schedules << s1 << s2 << s3
+ps4.schedules << s1 << s2 << s3 << s4
