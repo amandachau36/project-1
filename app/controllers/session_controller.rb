@@ -13,7 +13,7 @@ class SessionController < ApplicationController
     session[:user_id] = user.id
 
     # Redirects to user's profile page
-    redirect_to user_path(user.id)
+    redirect_to bookings_path
 
     else
 

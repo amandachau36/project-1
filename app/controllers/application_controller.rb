@@ -24,11 +24,15 @@ class ApplicationController < ActionController::Base
 
   def check_if_logged_in
 
-    unless @current_user.present?
+    unless @current_user.present? 
+      # need to make sure ppl can only view their own page. why does the below code work?
+      #&& @current_user.id == params[:id]
+
       flash[:error] = 'You must be logged in to view this page'
       redirect_to login_path
+
     end
-    
+
   end
 
 end

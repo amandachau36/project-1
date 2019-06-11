@@ -5,9 +5,12 @@
 </p>
 
 <p><Strong>Level: </Strong><%= @schedule.level %></p>
+<p><Strong>Instructor: </Strong><%= @schedule.instructor %></p>
 
 <p><%= @schedule.description %></p>
 
 <% if @schedule.image.present?  %>
   <%= image_tag @schedule.image  %>
 <% end %>
+
+<%= link_to 'Book class', new_booking_path(params[:id]) %>

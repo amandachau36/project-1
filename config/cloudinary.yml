@@ -1,0 +1,20 @@
+# creates a nested hashed 
+---
+development:
+  cloud_name: dtlxux3tl
+  api_key: '811563299569727'
+  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dtlxux3tl
+  api_key: '811563299569727'
+  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dtlxux3tl
+  api_key: '811563299569727'
+  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  enhance_image_tag: true
+  static_file_support: false

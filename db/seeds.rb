@@ -38,18 +38,10 @@ s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', dura
 puts "#{Schedule.all.length} schedule items have been created"
 
 
-# need a way to generate this automatically when a user creates an account
-
-PersonalSchedule.destroy_all
-
-ps1 = PersonalSchedule.create user_id: u1.id
-ps2 = PersonalSchedule.create user_id: u2.id
-ps3 = PersonalSchedule.create user_id: u3.id
-ps4 = PersonalSchedule.create user_id: u4.id
 
 # all schedules to personal schedule association
 
-ps1.schedules << s1
-ps2.schedules << s1 << s2
-ps3.schedules << s1 << s2 << s3
-ps4.schedules << s1 << s2 << s3 << s4
+
+u2.schedules << s1 << s2
+u3.schedules << s1 << s2 << s3
+u4.schedules << s1 << s2 << s3 << s4

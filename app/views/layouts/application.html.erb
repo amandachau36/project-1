@@ -13,9 +13,13 @@
 
   <nav>
   <% if @current_user.present? %>
-      Welcome <%= link_to @current_user.name, user_path(@current_user.id) %>
+      Welcome <%= link_to @current_user.name, user_profile_path %>
       |
       <%= link_to 'Logout', login_path, method: 'delete' %>
+      |
+      <%= link_to 'My Classes', bookings_path %>
+      |
+      <%= link_to 'Create New Class', new_schedule_path %>
 
     <% else %>
       <%= link_to 'Login', login_path %>
@@ -24,7 +28,7 @@
 
   <% end %>
    |
-   <%= link_to 'All classes', schedules_path %>
+   <%= link_to 'All Classes', schedules_path %>
 
   </nav>
 

@@ -1,7 +1,8 @@
 class Schedule < ApplicationRecord
-  has_and_belongs_to_many :personal_schedules
+    has_and_belongs_to_many :students, class_name: 'Users'
+    belongs_to :instructor, class_name: 'Users', optional: true
 
-  has_and_belongs_to_many :users
-
-  # through: 'personal_schedules'
+    validates :title, presence: true
+    validates :duration, presence: true
+    validates :start, presence: true
 end
