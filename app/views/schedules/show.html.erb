@@ -12,13 +12,15 @@
 <% if @current_user.present?%>
 <ul>
   <% @repeats_array.each do |date| %>
-    <li><%= l(date) %> |
+    <li><%= l(date) %>
     <!-- < % if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id %> -->
-      <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
+    <% if !@current_user.is_instructor  %>
+      | <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
     <!-- < % else %> -->
       <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %> </li>
+    <% end %>
     <!-- < % end % > -->
-      <%= link_to 'Student details' %>
+      <!-- < % # < %= link_to 'Student details' %> %> -->
 
   <% end %>
 </ul>

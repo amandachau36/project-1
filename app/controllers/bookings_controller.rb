@@ -66,13 +66,17 @@ class BookingsController < ApplicationController
   # delete
   def destroy
 
+
+
     user_id = @current_user.id
     date = DateTime.strptime(params[:date], '%s')
     schedule_id = params[:id]
 
     e = Enrollment.find_by user_id: user_id, date: date, schedule_id: schedule_id
 
-    e.destroy
+    if e.present?
+      e.destroy
+    end
 
 
 
