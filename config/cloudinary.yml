@@ -1,20 +1,20 @@
-# creates a nested hashed 
+# creates a nested hashed
 ---
 development:
-  cloud_name: dtlxux3tl
-  api_key: '811563299569727'
-  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  cloud_name: Rails.application.secrets.cloudinary_cloud_name
+  api_key: Rails.application.secrets.cloudinary_api_key
+  api_secret: Rails.application.secrets.cloudinary_api_secret
   enhance_image_tag: true
-  static_file_support: false
+  static_image_support: false
 production:
-  cloud_name: dtlxux3tl
-  api_key: '811563299569727'
-  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  cloud_name: Rails.application.secrets.cloudinary_cloud_name
+  api_key: Rails.application.secrets.cloudinary_api_key
+  api_secret: Rails.application.secrets.cloudinary_api_secret
   enhance_image_tag: true
-  static_file_support: true
+  static_image_support: true
 test:
-  cloud_name: dtlxux3tl
-  api_key: '811563299569727'
-  api_secret: Ictkj9k2mEwLgeEBGbK2j60qrWg
+  cloud_name: Rails.application.secrets.cloudinary_cloud_name
+  api_key: Rails.application.secrets.cloudinary_api_key
+  api_secret: Rails.application.secrets.cloudinary_api_secret
   enhance_image_tag: true
-  static_file_support: false
+  static_image_support: false

@@ -10,20 +10,15 @@
 <br>
 <br>
 
-<!-- need to add flash errors here -->
 
 
-<%= form_for @schedule do |f| %>
+<%= form_for @schedule, html: {multipart:true} do |f| %>
 
 <%= f.label :title %>
 <%= f.text_field :title %>
 <br>
 
-<%= f.label :image, 'Image URL' %>
-<%= f.text_field :image %>
-<br>
-
-<%= f.label :duration %>
+<%= f.label :duration, 'Duration (min)' %>
 <%= f.text_field :duration %>
 <br>
 
@@ -37,6 +32,10 @@
 
 <%= f.label :start, 'Date and Time' %>
 <%= f.datetime_field :start %>
+<br>
+
+<%= f.label :image %>
+<%= f.cl_image_upload :image %>
 <br>
 
 

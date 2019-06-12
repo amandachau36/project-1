@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
   s = Schedule.find params[:id]
 
   # avoid duplicates
-  @current_user.schedules << s unless @current_user.schedules.include? s
+  @current_user.classes_attending << s unless @current_user.classes_attending.include? s
 
   redirect_to bookings_path
 
@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @bookings = @current_user.schedules
+    @bookings = @current_user.classes_attending
   end
 
   # update
@@ -34,13 +34,13 @@ class BookingsController < ApplicationController
   end
 
   # delete
-  def delete
-    # user = User.find(params[:id])
-    # booking = Schedule.find
-    # # how do I pass in booking id aboveee
-    # user.schedules.delete(booking)
-    #
-    # redirect_to booking_path(params[:id])
+  def destroy
+    user = @current_user
+    booking = Schedule.find params[:id]
+
+    user.classes_attending.delete(booking)
+
+    redirect_to bookings_path
 
   end
 end

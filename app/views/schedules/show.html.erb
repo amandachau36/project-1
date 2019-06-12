@@ -1,16 +1,32 @@
 <h2> <%= @schedule.title %> </h2>
 
-<p> <strong><%= @schedule.start.to_formatted_s(:short) %></strong>
+<p> <strong><%= l(@schedule.start) %></strong>
   (<%= @schedule.duration %> min)
 </p>
 
 <p><Strong>Level: </Strong><%= @schedule.level %></p>
-<p><Strong>Instructor: </Strong><%= @schedule.instructor %></p>
+<p><Strong>Instructor: </Strong><%= @schedule.instructor.name %></p>
 
 <p><%= @schedule.description %></p>
 
-<% if @schedule.image.present?  %>
-  <%= image_tag @schedule.image  %>
+<p>
+<% if @current_user.present? && !@current_user.is_instructor %>
+  <% if @current_user.classes_attending.exclude? @schedule %>
+    <%= link_to 'Book Class', new_booking_path(params[:id]) %>
+  <% else %>
+    <%= link_to 'Cancel Class', destroy_booking_path(params[:id])  %>
+  <% end %>
 <% end %>
 
-<%= link_to 'Book class', new_booking_path(params[:id]) %>
+<% if @current_user == @schedule.instructor %>
+  <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
+  |
+  <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
+<% end  %>
+</p>
+
+
+
+<% if @schedule.image.present?  %>
+  <%= cl_image_tag @schedule.image  %>
+<% end %>

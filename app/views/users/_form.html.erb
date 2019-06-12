@@ -8,7 +8,8 @@
 <% end %>
 <br><br>
 
-<%= form_for @user do |f| %>
+<!-- multipart:true required for uploads files -->
+<%= form_for @user, html: {multipart:true} do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name %>
@@ -26,9 +27,15 @@
 <%= f.password_field :password_confirmation %>
 <br>
 
-<!-- need to change this to uploading an image -->
+<%= f.label :is_instructor, "Yoga Instructor" %>
+<%= f.text_field :is_instructor %>
+<br>
+
+
+<!-- < % = f.text_field :image %> -->
 <%= f.label :image %>
-<%= f.text_field :image %>
+<%= f.cl_image_upload :image %>
+
 <br>
 
 <%= f.submit %>

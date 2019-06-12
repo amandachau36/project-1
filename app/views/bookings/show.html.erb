@@ -2,7 +2,7 @@
 
 <% @bookings.each do |booking| %>
 <div>
-    <%= link_to booking.title, schedule_path(booking.id) %> | <%= booking.start.to_formatted_s(:short) %>
+    <%= link_to booking.title, schedule_path(booking.id) %> | <%= l(booking.start) %>
 </div>
 
 <% end %>

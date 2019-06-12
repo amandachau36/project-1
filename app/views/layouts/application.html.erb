@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
   </head>
 
   <h1>Sydney Yoga</h1>
@@ -18,14 +19,18 @@
       <%= link_to 'Logout', login_path, method: 'delete' %>
       |
       <%= link_to 'My Classes', bookings_path %>
-      |
-      <%= link_to 'Create New Class', new_schedule_path %>
+
 
     <% else %>
       <%= link_to 'Login', login_path %>
       |
       <%= link_to 'Create new account', new_user_path %>
 
+  <% end %>
+
+  <% if @current_user.present? && @current_user.is_instructor %>
+    |
+    <%= link_to 'Create New Class', new_schedule_path %>
   <% end %>
    |
    <%= link_to 'All Classes', schedules_path %>

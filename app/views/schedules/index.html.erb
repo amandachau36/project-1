@@ -5,7 +5,7 @@
 <!-- ask luke why config>initializers> time formats doesn't work schedule.start.to_formatted_s(:short) -->
 
 <div>
-  <%= link_to schedule.title, schedule_path(schedule.id) %> | <%= schedule.start.to_formatted_s(:short) %>
+  <%= link_to schedule.title, schedule_path(schedule.id) %> | <%= l(schedule.start) %>
 </div>
 
 

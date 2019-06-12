@@ -6,10 +6,12 @@
 
 <p><strong>Name: </Strong><%= @user.name %></p>
 <p><strong>Email: </Strong><%= @user.email %></p>
+<p><strong>Instructor: </Strong><%= @user.is_instructor %></p>
+
 
 <!-- How do I get the correct number of stars show up-->
 <p><strong>Password: </Strong> ***** </p>
 
 <% if @user.image.present?  %>
-  <%= image_tag @user.image  %>
+  <%= cl_image_tag @user.image  %>
 <% end %>

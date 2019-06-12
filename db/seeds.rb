@@ -25,13 +25,13 @@ Schedule.destroy_all
 
 puts "Seeding schedule table"
 
-s1 = Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.strptime('06/21/2019 5:00pm','%m/%d/%Y %I:%M%P'), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.'
+s1 = Schedule.create title: 'Yin in the Park', level: 'All', duration: 60, start: DateTime.strptime('06/21/2019 5:00pm','%m/%d/%Y %I:%M%P'), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.'
 
-s2 = Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start:  DateTime.strptime('06/19/2019 7:00','%m/%d/%Y %H:%M'), description: 'Start your day with gentle movement and a beautiful view.'
+s2 = Schedule.create title: 'Rooftop Hatha', level: 'All', duration: 90, start:  DateTime.strptime('06/19/2019 7:00','%m/%d/%Y %H:%M'), description: 'Start your day with gentle movement and a beautiful view.'
 
-s3 = Schedule.create title: 'Beach Flow', level: 'Intermediate', duration: '50', start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: 'Move to the beat of the ocean. Playing with inversions and balance'
+s3 = Schedule.create title: 'Beach Flow', level: 'Intermediate', duration: 50, start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: 'Move to the beat of the ocean. Playing with inversions and balance'
 
-s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: '60', start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!'
+s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: 60, start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!'
 
 
 
@@ -42,6 +42,16 @@ puts "#{Schedule.all.length} schedule items have been created"
 # all schedules to personal schedule association
 
 
-u2.schedules << s1 << s2
-u3.schedules << s1 << s2 << s3
-u4.schedules << s1 << s2 << s3 << s4
+u2.classes_attending << s1 << s2
+u3.classes_attending << s1 << s2 << s3
+u4.classes_attending << s1 << s2 << s3 << s4
+
+
+u1.classes_teaching << s1 << s2 << s3 << s4
+
+u1.update is_instructor: 1
+u2.update is_instructor: 0
+u3.update is_instructor: 0
+u4.update is_instructor: 0
+
+puts 'done seeding'

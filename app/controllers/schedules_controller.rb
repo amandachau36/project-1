@@ -13,12 +13,20 @@ class SchedulesController < ApplicationController
 
     # p @schedule
 
-    @schedule.instructor = @current_user.name
+    @schedule.user_id = @current_user.id
 
-    @schedule.save 
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload( params[:file] )
+      #req is a hash
+      @schedule.image = req["public_id"]
+    end
 
-    # this submits to /schedules method: 'post'
+    if @schedule.instructor.is_instructor 
+      @schedule.save
+    end
 
+
+    # this submits to /schedules method: 'post', is this correct???
     if @schedule.persisted?
       redirect_to schedules_path, method: 'post'
 
@@ -44,19 +52,52 @@ class SchedulesController < ApplicationController
 
   #UPDATE
   def edit
+    @schedule = Schedule.find params[:id]
+
+    unless @schedule.instructor == @current_user
+      redirect_to schedule_path(params[:id])
+      return
+    end
+
   end
 
   def update
-  end
+    @schedule = Schedule.find params[:id]
+
+    unless @schedule.instructor == @current_user
+      redirect_to schedule_path(params[:id])
+      return
+    end
+
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload( params[:file] )
+      #req is a hash
+      @schedule.image = req["public_id"]
+    end
+
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(params[:id])
+    else
+      flash[:errors] = @schedule.errors.full_messages
+
+      render :edit
+    end
+
+  end #end of update
 
   #DELETE
   def destroy
+    s = Schedule.find params[:id]
+    s.destroy
+    redirect_to schedules_path
+
+
   end
 
   private
 
   def schedule_params
-    params.require(:schedule).permit(:title, :image, :duration, :level, :description, :start)
+    params.require(:schedule).permit(:title, :duration, :level, :description, :start)
   end
 
 end

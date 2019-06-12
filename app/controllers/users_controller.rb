@@ -9,8 +9,20 @@ class UsersController < ApplicationController
   end
 
   def create
+
+
     # If passwords match, and name/e-mail are present then the new user will be saved to the database
-    @user = User.create user_params
+    #.new creates a new object with memory but does not save to db
+    @user = User.new user_params
+
+    #If an image file is uploaded
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload( params[:file] )
+      #req is a hash
+      @user.image = req["public_id"]
+    end
+
+    @user.save
 
     # If a new user was created then they will be logged in
     if @user.persisted?
@@ -47,7 +59,6 @@ class UsersController < ApplicationController
 
     unless @user == @current_user
 
-      flash[:error] = 'You must be logged in to view this page'
       redirect_to login_path
       return
 
@@ -65,6 +76,12 @@ class UsersController < ApplicationController
       redirect_to login_path
 
       return #stop code below from executing
+    end
+
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload( params[:file] )
+      #req is a hash
+      @user.image = req["public_id"]
     end
 
     # redirect to "/user/:id" if update is successful
@@ -97,7 +114,7 @@ class UsersController < ApplicationController
   # for security reasons - only the params below are permitted
   # does password confirmation actually need to be included
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_instructor)
   end
 
 end
