@@ -7,6 +7,6 @@ has_secure_password
 
 validates :email, presence: true, uniqueness: true
 validates :name, presence: true
-validates :is_instructor, presence: true
+# validates :is_instructor, presence: true
 
 end

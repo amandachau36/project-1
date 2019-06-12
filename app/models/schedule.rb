@@ -11,9 +11,6 @@ class Schedule < ApplicationRecord
     validate :future_start_date
 
     def future_start_date
-      puts
-      puts "VALIDATION RUNNING"
-      puts
       errors.add(:start, "Date can't be in the past") if
       start < Time.now
     end
