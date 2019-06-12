@@ -1,6 +1,11 @@
 class Schedule < ApplicationRecord
+    has_many :enrollments
 
-    has_and_belongs_to_many :students, class_name: 'User'
+    has_many :students, class_name: 'User', through: 'Enrollment'
+
+
+
+    # has_and_belongs_to_many :students, class_name: 'User'
 
     #foreign_key required otherwise the association won't be recognized
     belongs_to :instructor, class_name: 'User', optional: true, foreign_key: 'user_id'

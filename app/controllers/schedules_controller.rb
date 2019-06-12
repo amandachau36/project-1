@@ -11,7 +11,6 @@ class SchedulesController < ApplicationController
 
     @schedule = Schedule.new schedule_params
 
-    # p @schedule
 
     @schedule.user_id = @current_user.id
 
@@ -21,7 +20,7 @@ class SchedulesController < ApplicationController
       @schedule.image = req["public_id"]
     end
 
-    if @schedule.instructor.is_instructor 
+    if @schedule.instructor.is_instructor
       @schedule.save
     end
 
@@ -47,6 +46,18 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find params[:id]
+
+    x = 0
+    @repeats_array = []
+
+    while x <= @schedule.number_of_repeats
+       @repeats_array.push(@schedule.start+(x*7).days)
+       x +=1
+    end
+
+  
+
+
 
   end
 

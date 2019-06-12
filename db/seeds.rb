@@ -39,19 +39,37 @@ puts "#{Schedule.all.length} schedule items have been created"
 
 
 
-# all schedules to personal schedule association
+# Many-to-many association: users can have many classes_attending
+# u2.classes_attending << s1 << s2
+# u3.classes_attending << s1 << s2 << s3
+# u4.classes_attending << s1 << s2 << s3 << s4
 
 
-u2.classes_attending << s1 << s2
-u3.classes_attending << s1 << s2 << s3
-u4.classes_attending << s1 << s2 << s3 << s4
-
-
+# one to many association: an instructor will have many classes but an instructor will only have one class
 u1.classes_teaching << s1 << s2 << s3 << s4
 
 u1.update is_instructor: 1
 u2.update is_instructor: 0
 u3.update is_instructor: 0
 u4.update is_instructor: 0
+
+s1.update number_of_repeats: 1
+s2.update number_of_repeats: 2
+s3.update number_of_repeats: 0
+s4.update number_of_repeats: 0
+
+puts 'creating enrolment table'
+
+e1 = Enrollment.create schedule: s1, date: s1.start, user: u2
+e2 = Enrollment.create schedule: s1, date: s1.start+7.days, user: u2
+e3 = Enrollment.create schedule: s2, date: s2.start, user: u3
+e4 = Enrollment.create schedule: s2, date: s2.start+7.days, user: u3
+e5 = Enrollment.create schedule: s2, date: s2.start+2*7.days, user: u4
+e6 = Enrollment.create schedule: s3, date: s3.start, user: u4
+e7 = Enrollment.create schedule: s4, date: s4.start, user: u4
+e8 = Enrollment.create schedule: s3, date: s3.start, user: u2
+e9 = Enrollment.create schedule: s4, date: s4.start, user: u2
+
+
 
 puts 'done seeding'

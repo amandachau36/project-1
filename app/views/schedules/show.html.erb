@@ -1,7 +1,6 @@
 <h2> <%= @schedule.title %> </h2>
 
-<p> <strong><%= l(@schedule.start) %></strong>
-  (<%= @schedule.duration %> min)
+<p> <strong>Duration: </strong> <%= @schedule.duration %> min
 </p>
 
 <p><Strong>Level: </Strong><%= @schedule.level %></p>
@@ -9,14 +8,31 @@
 
 <p><%= @schedule.description %></p>
 
-<p>
+
 <% if @current_user.present? && !@current_user.is_instructor %>
-  <% if @current_user.classes_attending.exclude? @schedule %>
-    <%= link_to 'Book Class', new_booking_path(params[:id]) %>
-  <% else %>
-    <%= link_to 'Cancel Class', destroy_booking_path(params[:id])  %>
+<ul>
+  <% @repeats_array.each do |date| %>
+    <li><%= l(date) %> |
+    <!-- < % if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id %> -->
+      <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
+    <!-- < % else %> -->
+       <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %> </li>
+    <!-- < % end % > -->
   <% end %>
+</ul>
+
+
 <% end %>
+<!--
+<p>
+< % if @current_user.present? && !@current_user.is_instructor %>
+  < % if @current_user.classes_attending.exclude? @schedule %>
+    < %= link_to 'Book Class', new_booking_path(params[:id]) %>
+  < % else %>
+    < %= link_to 'Cancel Class', destroy_booking_path(params[:id])  %>
+  < % end %>
+< % end %>
+-->
 
 <% if @current_user == @schedule.instructor %>
   <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
