@@ -24,13 +24,9 @@ class BookingsController < ApplicationController
 
     end
 
-    # @enrollment = Enrollment.create(
-    #   user_id: @current_user.id,
-    #   date: DateTime.strptime(params[:date], '%s'),
-    #   schedule_id: params[:id]
-    # )
 
-      # avoid duplicates
+
+    # avoid duplicates
     # @current_user.classes_attending << s unless @current_user.classes_attending.include? s
 
     redirect_to bookings_path
@@ -42,7 +38,21 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @bookings = @current_user.classes_attending
+
+    #if student, show class enrollments/bookings
+    @enrollments = @current_user.enrollments.sort_by {
+      |enrollment| enrollment['date']
+    }
+
+
+
+    # @booking = @current_user.classes_attending
+    # User.second.enrollments.first.schedule.title
+
+    # if instructor show classes that they are teaching
+    @classes_teaching = @current_user.classes_teaching
+
+
   end
 
   # update
@@ -63,6 +73,7 @@ class BookingsController < ApplicationController
     e = Enrollment.find_by user_id: user_id, date: date, schedule_id: schedule_id
 
     e.destroy
+
 
 
     # user = @current_user

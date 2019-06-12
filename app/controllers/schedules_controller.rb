@@ -41,7 +41,8 @@ class SchedulesController < ApplicationController
   def index
     # all classes in chronological order
     # Check with luke - loops through each array item (i.e. schedule) and sorts in ascending order depending on the value of the start key/hash
-    @schedules = Schedule.all.sort_by { |schedule| schedule['start'] }
+    @schedules = Schedule.all.sort_by { |schedule| schedule['start']
+    }
   end
 
   def show
@@ -55,7 +56,7 @@ class SchedulesController < ApplicationController
        x +=1
     end
 
-  
+
 
 
 
@@ -108,7 +109,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:title, :duration, :level, :description, :start)
+    params.require(:schedule).permit(:title, :duration, :level, :description, :start, :number_of_repeats)
   end
 
 end
