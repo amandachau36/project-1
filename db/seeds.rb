@@ -60,7 +60,7 @@ s4.update number_of_repeats: 0
 
 puts 'creating enrolment table'
 
-# use students alias for user when referring to enrollment 
+# use students alias for user when referring to enrollment
 
 e1 = Enrollment.create schedule: s1, date: s1.start, student: u2
 e2 = Enrollment.create schedule: s1, date: s1.start+7.days, student: u2
@@ -71,6 +71,20 @@ e6 = Enrollment.create schedule: s3, date: s3.start, student: u4
 e7 = Enrollment.create schedule: s4, date: s4.start, student: u4
 e8 = Enrollment.create schedule: s3, date: s3.start, student: u2
 e9 = Enrollment.create schedule: s4, date: s4.start, student: u2
+
+puts 'now updating address to schedule'
+
+# seeding doesn't work due to google API restrictions
+# what about seeding repeats, need to validate and makes presence true
+# I also want to seed past dates. 
+s1.update address: '1 William St, Sydney 2010'
+s2.update address: '330 George St, Sydney 2000'
+s3.update address: '14 Darling Dr, Sydney 2000'
+s4.update address: '458 Harris St, Ultimo 2007'
+
+# s2.update address: '285A Crown St, Surry Hills NSW 2010'
+# s3.update address: '1 Notts Ave, Bondi Beach 2026'
+# s4.update address: '2 Northcote Rd, Glebe 2037'
 
 
 

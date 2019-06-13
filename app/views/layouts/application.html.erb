@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <%= cloudinary_js_config %>
   </head>
-
+  <body>
   <h1>Sydney Yoga</h1>
 
   <nav>
@@ -39,12 +39,15 @@
   </nav>
 
   <hr>
-    <body>
+
       <%= yield %>
-    </body>
+
   <hr>
 
   <footer>
     &copy; Karma Tree Co. 2019
   </footer>
+
+
+  </body>
 </html>

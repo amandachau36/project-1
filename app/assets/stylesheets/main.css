@@ -7,3 +7,12 @@ ul {
   padding: 0;
 
 }
+
+.show {
+  height: 300px;
+}
+
+#map {
+  height: 300px;
+  width: 300px;
+}

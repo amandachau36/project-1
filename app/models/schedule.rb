@@ -15,6 +15,16 @@ class Schedule < ApplicationRecord
     validates :start, presence: true
     validate :future_start_date
 
+    # https://github.com/alexreisner/geocoder
+
+    geocoded_by :address
+    after_validation :geocode
+
+    # reverse_geocoded_by :latitude, :longitude
+    #whyyy???
+    # after_validation :reverse_geocode
+
+
     def future_start_date
       errors.add(:start, "Date can't be in the past") if
       start < Time.now

@@ -58,3 +58,7 @@ gem "cloudinary", "~> 1.11"
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'geocoder'
+
+gem 'jquery-rails'

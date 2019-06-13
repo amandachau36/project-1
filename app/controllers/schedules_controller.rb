@@ -87,6 +87,7 @@ class SchedulesController < ApplicationController
       @schedule.image = req["public_id"]
     end
 
+
     if @schedule.update(schedule_params)
       redirect_to schedule_path(params[:id])
     else
@@ -109,7 +110,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:title, :duration, :level, :description, :start, :number_of_repeats)
+    params.require(:schedule).permit(:title, :duration, :level, :description, :start, :number_of_repeats, :address)
   end
 
 end

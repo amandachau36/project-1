@@ -12,6 +12,7 @@
 <!-- How do I get the correct number of stars show up-->
 <p><strong>Password: </Strong> ***** </p>
 
+
 <% if @user.image.present?  %>
-  <%= cl_image_tag @user.image  %>
+  <%= cl_image_tag(@user.image, class: 'show' )  %>
 <% end %>

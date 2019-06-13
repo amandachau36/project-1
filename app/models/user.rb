@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
 
 
-
   has_many :classes_teaching, class_name: 'Schedule'
 
   #necessary for bcrpyt and to link password to password_digest
@@ -17,7 +16,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   # validates :is_instructor, presence: true
 
-  #required for if cancel or book class should display 
+
+
+  #required for if cancel or book class should display
   def already_enrolled?( class_session, date )
     self.enrollments.find_by( date: date, schedule: class_session ).present?
   end
