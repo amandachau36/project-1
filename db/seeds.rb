@@ -60,15 +60,17 @@ s4.update number_of_repeats: 0
 
 puts 'creating enrolment table'
 
-e1 = Enrollment.create schedule: s1, date: s1.start, user: u2
-e2 = Enrollment.create schedule: s1, date: s1.start+7.days, user: u2
-e3 = Enrollment.create schedule: s2, date: s2.start, user: u3
-e4 = Enrollment.create schedule: s2, date: s2.start+7.days, user: u3
-e5 = Enrollment.create schedule: s2, date: s2.start+2*7.days, user: u4
-e6 = Enrollment.create schedule: s3, date: s3.start, user: u4
-e7 = Enrollment.create schedule: s4, date: s4.start, user: u4
-e8 = Enrollment.create schedule: s3, date: s3.start, user: u2
-e9 = Enrollment.create schedule: s4, date: s4.start, user: u2
+# use students alias for user when referring to enrollment 
+
+e1 = Enrollment.create schedule: s1, date: s1.start, student: u2
+e2 = Enrollment.create schedule: s1, date: s1.start+7.days, student: u2
+e3 = Enrollment.create schedule: s2, date: s2.start, student: u3
+e4 = Enrollment.create schedule: s2, date: s2.start+7.days, student: u3
+e5 = Enrollment.create schedule: s2, date: s2.start+2*7.days, student: u4
+e6 = Enrollment.create schedule: s3, date: s3.start, student: u4
+e7 = Enrollment.create schedule: s4, date: s4.start, student: u4
+e8 = Enrollment.create schedule: s3, date: s3.start, student: u2
+e9 = Enrollment.create schedule: s4, date: s4.start, student: u2
 
 
 
