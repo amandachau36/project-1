@@ -1,17 +1,17 @@
 <h2> My classes </h2>
 
 <% @enrollments.each do |enrollment| %>
-<ul>
-  <li> <%= link_to enrollment.schedule.title, schedule_path(enrollment.schedule.id) %> | <%= l(enrollment.date) %>
-  </li>
+  <ul>
+    <li> <%= link_to enrollment.schedule.title, schedule_path(enrollment.schedule.id) %> | <%= l(enrollment.date) %>
+    </li>
 
-</ul>
+  </ul>
 <% end %>
 
 
 <% @classes_teaching.each do |klass| %>
-<ul>
-  <li> <%= link_to klass.title, schedule_path(klass.id) %>
-  </li>
-</ul>
+  <ul>
+    <li> <%= link_to klass.title, schedule_path(klass.id) %>
+    </li>
+  </ul>
 <% end %>

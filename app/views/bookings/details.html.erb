@@ -1,0 +1,16 @@
+<h2>Class details</h2>
+
+<h3><%= @schedule.title %></h3>
+<p><strong> <%= l(@date) %> </strong></p>
+
+
+<p><strong>Number of students: </strong><%= @enrollments.length %></p>
+
+<p><strong>Students: </strong>
+  <ul>
+    <% @enrollments.each do |enrollment| %>
+       <li> <%= enrollment.student.name %> | <%= enrollment.student.email %>
+       </li>
+    <% end %>
+  </ul>
+</p>

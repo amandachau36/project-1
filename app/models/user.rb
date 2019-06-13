@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # source required if you are going a model instead of join table
   has_many :classes_attending, through: 'enrollments', source: 'schedule'
 
-  # has_and_belongs_to_many :classes_attending, class_name: 'Schedule'
+
 
 
   has_many :classes_teaching, class_name: 'Schedule'
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   # validates :is_instructor, presence: true
 
+  #required for if cancel or book class should display 
   def already_enrolled?( class_session, date )
     self.enrollments.find_by( date: date, schedule: class_session ).present?
   end

@@ -7,19 +7,19 @@ class BookingsController < ApplicationController
   end
 
   def create
-    user_id = @current_user.id
-    date = DateTime.strptime(params[:date], '%s')
-    schedule_id = params[:id]
+    u = @current_user.id
+    d = DateTime.strptime(params[:date], '%s')
+    s = params[:id]
 
-    e = Enrollment.find_by user_id: user_id, date: date, schedule_id: schedule_id
+    e = Enrollment.find_by user_id: u, date: d, schedule_id: s
 
     # avoid duplication
     unless e.present?
 
       @enrollment = Enrollment.create(
-        user_id: user_id,
-        date: date,
-        schedule_id: schedule_id
+        user_id: u,
+        date: d,
+        schedule_id: s
       )
 
     end
@@ -48,6 +48,16 @@ class BookingsController < ApplicationController
     # if instructor show classes that they are teaching
     @classes_teaching = @current_user.classes_teaching
 
+
+  end
+
+  def details
+    @date = DateTime.strptime(params[:date], '%s')
+    s = params[:id]
+
+    @enrollments = Enrollment.where date: @date, schedule_id: s
+    @schedule = Schedule.find s
+    # raise 'hell'
 
   end
 
