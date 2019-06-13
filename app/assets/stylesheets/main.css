@@ -1,10 +1,128 @@
 body {
   font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  color: black;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-boz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
   list-style: none;
   padding: 0;
+
+}
+a {
+  text-decoration: none;
+}
+.sydneyYoga{
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+h1 {
+  padding-left: 0.6em;
+}
+
+.logo {
+  display: inline-block;
+  width: 60%;
+  text-align: right;
+}
+.logo img {
+  max-width: 4.5em;
+  padding-right: 0.9em;
+  padding-top: 0.9em;
+}
+nav {
+  /* border: 1px solid orange; */
+  background-color: rgba(252, 237, 38, 0.89);
+  width: 100%;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  height: 2.7em;
+}
+
+nav div{
+  display: inline-block;
+  /* border: 1px red solid; */
+  height: 100%;
+
+}
+
+
+#leftNav {
+  width: 50%;
+  text-align: left;
+
+}
+
+#rightNav {
+  width: 50%;
+  text-align: right;
+}
+
+nav ul {
+  height: 100%;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+  height: 100%;
+  padding: 0.9em;
+  vertical-align: middle;
+}
+
+nav a{
+  color: black;
+
+}
+
+nav li:hover{
+  border-bottom: 3px solid black;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.main {
+  padding: 1em;
+}
+
+.login h2 {
+  margin-top: 0;
+}
+
+.blur {
+  background-image: url("plants.jpg");
+  background-size: cover;
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+
+  height: 30em;
+}
+
+
+.transparent {
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  padding: 20px;
 
 }
 
@@ -13,6 +131,10 @@ ul {
 }
 
 #map {
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
+}
+
+footer {
+  padding-left: 1em;
 }

@@ -57,28 +57,27 @@
 <% end %>
 
 <p><Strong>Location: </Strong><%= @schedule.address %></p>
-
-  <div id="map"></div>
-    <script>
-      const currentLat = <%= @schedule.latitude %>;
-      const currentLng = <%= @schedule.longitude%>;
+<div id="map"></div>
 
 
-      function initMap() {
-        var myLatLng = {lat: currentLat, lng: currentLng};
+  <script>
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: myLatLng
-        });
+   function initMap() {
+     var myLatLng = {lat: <%= @schedule.latitude %>, lng: <%= @schedule.longitude %>};
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map
-        });
-      }
-    </script>
+     var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 15,
+       center: myLatLng
+     });
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLupZmxxc8wCk_Yzg3Mkn3933xsZ1MjzU&callback=initMap">
+     var marker = new google.maps.Marker({
+       position: myLatLng,
+       map: map
+     });
+   }
+   </script>
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDsb0BbBVXDw_tfXPeJWkvG_z0Rsc3B5U&callback=initMap">
+ </script>
+
   </script>

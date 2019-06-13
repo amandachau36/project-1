@@ -55,10 +55,7 @@ class SchedulesController < ApplicationController
        @repeats_array.push(@schedule.start+(x*7).days)
        x +=1
     end
-
-
-
-
+  
 
   end
 
