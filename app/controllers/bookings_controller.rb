@@ -24,8 +24,6 @@ class BookingsController < ApplicationController
 
     end
 
-
-
     # avoid duplicates
     # @current_user.classes_attending << s unless @current_user.classes_attending.include? s
 
@@ -43,8 +41,6 @@ class BookingsController < ApplicationController
     @enrollments = @current_user.enrollments.sort_by {
       |enrollment| enrollment['date']
     }
-
-
 
     # @booking = @current_user.classes_attending
     # User.second.enrollments.first.schedule.title

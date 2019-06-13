@@ -20,7 +20,9 @@ get '/bookings/:id/:date/add' => 'bookings#create', as: 'new_booking'
 
 get '/bookings/:id/:date/delete' => 'bookings#destroy', as: 'destroy_booking'
 
-# get '/bookings/:od
+get '/bookings/:id/:date/student_details' => 'bookings#details', as: 'details_booking'
+
+# get '/bookings/:id
 
 # get '/bookings/:id/add' => 'bookings#create', as: 'new_booking'
 # get '/bookings/:id/delete' => 'bookings#destroy', as: 'destroy_booking'

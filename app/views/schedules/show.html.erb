@@ -10,38 +10,46 @@
 
 
 <% if @current_user.present?%>
-<ul>
-  <% @repeats_array.each do |date| %>
-    <li><%= l(date) %>
-    <!-- < % if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id %> -->
-    <% if !@current_user.is_instructor  %>
-      | <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
-    <!-- < % else %> -->
-      <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %> </li>
-    <% end %>
-    <!-- < % end % > -->
-      <!-- < % # < %= link_to 'Student details' %> %> -->
 
-  <% end %>
-</ul>
+  <ul>
+    <% @repeats_array.each do |date| %>
 
+      <li><%= l(date) %>
 
-<% end %>
+      <% if !@current_user.is_instructor  %>
+
+        <!-- | if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id -->
+
+        <% if @current_user.already_enrolled? @schedule, date  %>
+          <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %>
+        <% else %>
+          <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
+        <% end %> <!-- already-enrolled check %> -->
+
+      <% end %> <!--  is-instructor check %> -->
+
+      <% if @current_user == @schedule.instructor  %>
+          |
+          <%= link_to 'Details', details_booking_path(@schedule.id, date.to_time.to_i)  %>
+
+      <% end %>
+
+        </li>
+    <% end %><%# each session (repeat) check %>
+
+  </ul>
+
+<% end %><%#  logged-in check %>
+
 <!--
 
 l = Enrollment.where(schedule_id: 63, date: )
 l.length
 l.first.user.name
+-->
+
 
 <p>
-< % if @current_user.present? && !@current_user.is_instructor %>
-  < % if @current_user.classes_attending.exclude? @schedule %>
-    < %= link_to 'Book Class', new_booking_path(params[:id]) %>
-  < % else %>
-    < %= link_to 'Cancel Class', destroy_booking_path(params[:id])  %>
-  < % end %>
-< % end %>
--->
 
 <% if @current_user == @schedule.instructor %>
   <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
