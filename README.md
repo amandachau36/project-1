@@ -1,24 +1,29 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sydney Yoga
 
-Things you may want to cover:
 
-* Ruby version
+**Link:** https://sydney-yoga.herokuapp.com/login
 
-* System dependencies
+## Project 1 for GA's WDI
 
-* Configuration
+**Goal:**  To build my first full-stack application using a Rails app.
 
-* Database creation
+**Main Features**
+* Encrypted login for students and instructors
+* Students book and cancel classes
+* Instructors can create, edit and delete class
+* Can create reoccurring classes
+* Instructors can view students booked for each class
+* Displays google map for class location   
 
-* Database initialization
+**Tech Used**
+* Ruby
+* Ruby on Rails
+* Gems: pry-rails, cloudinary, rails 12 factor, geocoder, jquery
+* APIs: Google Maps JavaScript API, Google Geocoding API
+* HTML
+* CSS
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**List of bugs**
+* . . .
