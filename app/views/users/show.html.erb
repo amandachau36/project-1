@@ -1,18 +1,20 @@
-<h2> Account Details</h2>
+<div class="main">
+  <h2> Account Details</h2>
 
-<%= link_to 'Edit', edit_user_path(@user.id) %>
-|
-<%= link_to 'Delete Account', user_path(@user.id), method: 'delete' %>
+  <%= link_to 'Edit', edit_user_path(@user.id) %>
+  |
+  <%= link_to 'Delete Account', user_path(@user.id), method: 'delete' %>
 
-<p><strong>Name: </Strong><%= @user.name %></p>
-<p><strong>Email: </Strong><%= @user.email %></p>
-<p><strong>Instructor: </Strong><%= @user.is_instructor %></p>
-
-
-<!-- How do I get the correct number of stars show up-->
-<p><strong>Password: </Strong> ***** </p>
+  <p><strong>Name: </Strong><%= @user.name %></p>
+  <p><strong>Email: </Strong><%= @user.email %></p>
+  <p><strong>Instructor: </Strong><%= @user.is_instructor %></p>
 
 
-<% if @user.image.present?  %>
-  <%= cl_image_tag(@user.image, class: 'show' )  %>
-<% end %>
+  <!-- How do I get the correct number of stars show up-->
+  <p><strong>Password: </Strong> ***** </p>
+
+
+  <% if @user.image.present?  %>
+    <%= cl_image_tag(@user.image, class: 'show' )  %>
+  <% end %>
+</div>
