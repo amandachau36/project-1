@@ -128,8 +128,22 @@ nav li:hover{
   bottom-border: solid 1px white;
 }
 
+.description {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.classImg {
+  display: inline-block;
+  width: 50%;
+
+}
+
 .show {
   height: 300px;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 #map {

@@ -26,13 +26,13 @@ Schedule.destroy_all
 puts "Seeding schedule table"
 
 
-s1 = Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.strptime('06/21/2019 5:00pm','%m/%d/%Y %I:%M%P'), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.', number_of_repeats: 1
+s1 = Schedule.create title: 'Yin in the Park', level: 'All', duration: '60', start: DateTime.strptime('06/21/2019 5:00pm','%m/%d/%Y %I:%M%P'), description: 'Unwind at the end of the week. Bring a blanket or warm jumper.', number_of_repeats: 1, image: 'https://static1.squarespace.com/static/5214ba48e4b0436556b1ff95/5728ed8262cd94342d0f996a/5728ed832b8dde38fba33cf9/1462300038703/150611+PARK+YOGA_013.jpg?format=2500w'
 
-s2 = Schedule.create title: 'Rooftop Hatha', level: 'All', duration: '90', start:  DateTime.strptime('06/19/2019 7:00','%m/%d/%Y %H:%M'), description: 'Start your day with gentle movement and a beautiful view.', number_of_repeats: 2
+s2 = Schedule.create title: 'Goat Yoga', level: 'All', duration: '90', start:  DateTime.strptime('06/19/2019 7:00','%m/%d/%Y %H:%M'), description: 'An unlikely but surprisingly popular combo', number_of_repeats: 2, image: 'https://www.zenitry.com/wp-content/uploads/2018/04/Screen-Shot-2018-04-19-at-6.44.33-AM.png'
 
-s3 = Schedule.create title: 'Beach Flow', level: 'Intermediate', duration: '50', start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: ' Playing with inversions and balance', number_of_repeats: 0
+s3 = Schedule.create title: 'Beach Flow', level: 'Intermediate', duration: '50', start:  DateTime.strptime('06/28/2019 10:00','%m/%d/%Y %H:%M'), description: ' Playing with inversions and balance', number_of_repeats: 0, image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
 
-s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: '60', start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!', number_of_repeats: 0
+s4 = Schedule.create title: 'Mid-day Acro Yoga Jam', level: 'Intermediate', duration: '60', start:  DateTime.strptime('06/28/2019 12:00','%m/%d/%Y %H:%M'), description: 'Make the most of your lunch break - move, connect, and have fun!', number_of_repeats: 0, image: 'https://millennialmagazine.com/wp-content/uploads/2014/08/acroyoga-class.jpg'
 
 
 puts "#{Schedule.all.length} schedule items have been created"
@@ -50,8 +50,9 @@ u4.update is_instructor: 0
 # one to many association: an instructor will have many classes but an instructor will only have one class
 
 
+Enrollment.destroy_all
 
-puts 'creating enrollment table'
+puts 'Seeding enrollment table'
 
 # use students alias for user when referring to enrollment
 

@@ -2,65 +2,71 @@
   <h2> <%= @schedule.title %> </h2>
 
   <p>
-
-  <% if @current_user == @schedule.instructor %>
-    <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
-    |
-    <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
-  <% end  %>
+    <% if @current_user == @schedule.instructor %>
+      <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
+      |
+      <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
+    <% end  %>
   </p>
 
-  <p> <strong>Duration: </strong> <%= @schedule.duration %> min
-  </p>
+  <div>
 
-  <p><Strong>Level: </Strong><%= @schedule.level %></p>
-  <p><Strong>Instructor: </Strong><%= @schedule.instructor.name %></p>
+    <div class="description">
 
-  <p><%= @schedule.description %></p>
+      <p> <strong>Duration: </strong> <%= @schedule.duration %> min
+      </p>
 
-
-  <% if @current_user.present?%>
-
-    <ul>
-      <% @repeats_array.each do |date| %>
-
-        <li><%= l(date) %>
-
-        <% if !@current_user.is_instructor  %>
-
-          <!-- | if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id -->
-
-          <% if @current_user.already_enrolled? @schedule, date  %>
-            <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %>
-          <% else %>
-            <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
-          <% end %> <!-- already-enrolled check %> -->
-
-        <% end %> <!--  is-instructor check %> -->
-
-        <% if @current_user == @schedule.instructor  %>
-            |
-            <%= link_to 'Details', details_booking_path(@schedule.id, date.to_time.to_i)  %>
-
-        <% end %>
-
-          </li>
-      <% end %><%# each session (repeat) check %>
-
-    </ul>
-
-  <% end %><%#  logged-in check %>
+      <p><Strong>Level: </Strong><%= @schedule.level %></p>
+      <p><Strong>Instructor: </Strong><%= @schedule.instructor.name %></p>
+      <p><Strong>Location: </Strong><%= @schedule.address %></p>
 
 
-
-  <% if @schedule.image.present?  %>
-    <%= cl_image_tag(@schedule.image, class: 'show')  %>
-  <% end %>
-
-  <p><Strong>Location: </Strong><%= @schedule.address %></p>
-  <div id="map"></div>
+      <p><%= @schedule.description %></p>
 
 
+      <% if @current_user.present?%>
+
+        <ul>
+          <% @repeats_array.each do |date| %>
+
+            <li><%= l(date) %>
+
+            <% if !@current_user.is_instructor  %>
+
+              <!-- | if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id -->
+
+              <% if @current_user.already_enrolled? @schedule, date  %>
+                <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %>
+              <% else %>
+                <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
+              <% end %> <!-- already-enrolled check %> -->
+
+            <% end %> <!--  is-instructor check %> -->
+
+            <% if @current_user == @schedule.instructor  %>
+                |
+                <%= link_to 'Details', details_booking_path(@schedule.id, date.to_time.to_i)  %>
+
+            <% end %>
+
+              </li>
+          <% end %><%# each session (repeat) check %>
+
+        </ul>
+
+      <% end %><%#  logged-in check %>
+
+    </div><div class="classImg">
+
+      <% if @schedule.image.present?  %>
+        <%= cl_image_tag(@schedule.image, class: 'show')  %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+    <div id="map"></div>
     <script>
 
      function initMap() {
