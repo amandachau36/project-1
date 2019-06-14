@@ -98,7 +98,7 @@ nav li:hover{
 }
 
 .blur {
-  background-image: url("plants.jpg");
+  background-image: url("https://images.unsplash.com/photo-1489679124346-536a843e31ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
   filter: blur(1px);
   -webkit-filter: blur(1px);
