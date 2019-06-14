@@ -1,14 +1,13 @@
-<h2>All Classes</h2>
+<div class="main">
+  <h2>All Classes</h2>
 
-<% @schedules.each do |schedule| %>
-
-<!-- ask luke why config>initializers> time formats doesn't work schedule.start.to_formatted_s(:short) -->
-
-<div>
-  <%= link_to schedule.title, schedule_path(schedule.id) %> | <%= l(schedule.start) %>
-</div>
+  <% @schedules.each do |schedule| %>
 
 
-<% end %>
+    <div>
+      <%= link_to schedule.title, schedule_path(schedule.id) %> | <%= l(schedule.start) %>
+    </div>
 
-<%#  %>
+
+  <% end %>
+  </div>

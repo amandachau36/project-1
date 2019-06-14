@@ -88,18 +88,13 @@ nav li:hover{
   border-bottom: 3px solid black;
 }
 
-hr {
-  border: 0;
-  height: 2px;
-background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-
 .main {
   padding: 1em;
 }
 
 .login h2 {
   margin-top: 0;
+  text-align: center;
 }
 
 .blur {
@@ -123,7 +118,14 @@ background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75
   z-index: 2;
   width: 40%;
   padding: 20px;
+}
 
+
+.myLogin input {
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  border: none;
+  bottom-border: solid 1px white;
 }
 
 .show {
@@ -136,5 +138,7 @@ background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75
 }
 
 footer {
-  padding-left: 1em;
+  padding: 1em;
+  background-color: rgba(252, 237, 38, 0.89);
+
 }

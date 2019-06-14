@@ -1,83 +1,84 @@
-<h2> <%= @schedule.title %> </h2>
+<div class="main">
+  <h2> <%= @schedule.title %> </h2>
 
-<p>
+  <p>
 
-<% if @current_user == @schedule.instructor %>
-  <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
-  |
-  <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
-<% end  %>
-</p>
+  <% if @current_user == @schedule.instructor %>
+    <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
+    |
+    <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
+  <% end  %>
+  </p>
 
-<p> <strong>Duration: </strong> <%= @schedule.duration %> min
-</p>
+  <p> <strong>Duration: </strong> <%= @schedule.duration %> min
+  </p>
 
-<p><Strong>Level: </Strong><%= @schedule.level %></p>
-<p><Strong>Instructor: </Strong><%= @schedule.instructor.name %></p>
+  <p><Strong>Level: </Strong><%= @schedule.level %></p>
+  <p><Strong>Instructor: </Strong><%= @schedule.instructor.name %></p>
 
-<p><%= @schedule.description %></p>
-
-
-<% if @current_user.present?%>
-
-  <ul>
-    <% @repeats_array.each do |date| %>
-
-      <li><%= l(date) %>
-
-      <% if !@current_user.is_instructor  %>
-
-        <!-- | if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id -->
-
-        <% if @current_user.already_enrolled? @schedule, date  %>
-          <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %>
-        <% else %>
-          <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
-        <% end %> <!-- already-enrolled check %> -->
-
-      <% end %> <!--  is-instructor check %> -->
-
-      <% if @current_user == @schedule.instructor  %>
-          |
-          <%= link_to 'Details', details_booking_path(@schedule.id, date.to_time.to_i)  %>
-
-      <% end %>
-
-        </li>
-    <% end %><%# each session (repeat) check %>
-
-  </ul>
-
-<% end %><%#  logged-in check %>
+  <p><%= @schedule.description %></p>
 
 
+  <% if @current_user.present?%>
 
-<% if @schedule.image.present?  %>
-  <%= cl_image_tag(@schedule.image, class: 'show')  %>
-<% end %>
+    <ul>
+      <% @repeats_array.each do |date| %>
 
-<p><Strong>Location: </Strong><%= @schedule.address %></p>
-<div id="map"></div>
+        <li><%= l(date) %>
+
+        <% if !@current_user.is_instructor  %>
+
+          <!-- | if Enrollment.find_by user_id: @current_user.id, date: date, schedule_id: @schedule.id -->
+
+          <% if @current_user.already_enrolled? @schedule, date  %>
+            <%= link_to 'Cancel class', destroy_booking_path(@schedule.id, date.to_time.to_i) %>
+          <% else %>
+            <%= link_to 'Book class', new_booking_path(@schedule.id, date.to_time.to_i) %>
+          <% end %> <!-- already-enrolled check %> -->
+
+        <% end %> <!--  is-instructor check %> -->
+
+        <% if @current_user == @schedule.instructor  %>
+            |
+            <%= link_to 'Details', details_booking_path(@schedule.id, date.to_time.to_i)  %>
+
+        <% end %>
+
+          </li>
+      <% end %><%# each session (repeat) check %>
+
+    </ul>
+
+  <% end %><%#  logged-in check %>
 
 
-  <script>
 
-   function initMap() {
-     var myLatLng = {lat: <%= @schedule.latitude %>, lng: <%= @schedule.longitude %>};
+  <% if @schedule.image.present?  %>
+    <%= cl_image_tag(@schedule.image, class: 'show')  %>
+  <% end %>
 
-     var map = new google.maps.Map(document.getElementById('map'), {
-       zoom: 15,
-       center: myLatLng
-     });
+  <p><Strong>Location: </Strong><%= @schedule.address %></p>
+  <div id="map"></div>
 
-     var marker = new google.maps.Marker({
-       position: myLatLng,
-       map: map
-     });
-   }
+
+    <script>
+
+     function initMap() {
+       var myLatLng = {lat: <%= @schedule.latitude %>, lng: <%= @schedule.longitude %>};
+
+       var map = new google.maps.Map(document.getElementById('map'), {
+         zoom: 15,
+         center: myLatLng
+       });
+
+       var marker = new google.maps.Marker({
+         position: myLatLng,
+         map: map
+       });
+     }
+     </script>
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDZQQtxryXYrhSPdRbt2DAw7IMf1NxNU&callback=initMap">
    </script>
- <script async defer
- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDsb0BbBVXDw_tfXPeJWkvG_z0Rsc3B5U&callback=initMap">
- </script>
 
-  </script>
+</div>
