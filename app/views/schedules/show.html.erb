@@ -1,17 +1,18 @@
 <div class="main">
-  <h2> <%= @schedule.title %> </h2>
-
-  <p>
-    <% if @current_user == @schedule.instructor %>
-      <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
-      |
-      <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
-    <% end  %>
-  </p>
-
   <div>
 
     <div class="description">
+      <h2> <%= @schedule.title %> </h2>
+
+      <p>
+        <% if @current_user == @schedule.instructor %>
+          <%= link_to 'Edit Class', edit_schedule_path(params[:id]) %>
+          |
+          <%= link_to 'Delete Class', schedule_path(params[:id]), method:'delete'  %>
+        <% end  %>
+      </p>
+
+
 
       <p> <strong>Duration: </strong> <%= @schedule.duration %> min
       </p>
@@ -56,17 +57,18 @@
 
       <% end %><%#  logged-in check %>
 
-    </div><div class="classImg">
+    </div><div id="map"></div>
+  </div>
 
-      <% if @schedule.image.present?  %>
-        <%= cl_image_tag(@schedule.image, class: 'show')  %>
-      <% end %>
-    </div>
+  <div class="classImg">
+
+    <% if @schedule.image.present?  %>
+      <%= cl_image_tag(@schedule.image, class: 'show')  %>
+    <% end %>
   </div>
 
 
 
-    <div id="map"></div>
     <script>
 
      function initMap() {

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
       flash[:errors] = @user.errors.full_messages
 
-      # ?render users#new page with partially completed form
+      # render users#new page with partially completed form
       render :new
     end
 
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
 
-    # ask luke if this is right
+
     # only update params if id to be updated matches the logged in user because it is possible to change where the form submits to in the console.
     unless @user == @current_user
       redirect_to login_path
@@ -104,9 +104,6 @@ class UsersController < ApplicationController
     User.find(@current_user.id).destroy
     session[:user_id] = nil #this logs out the user (deletes the session ID)
     redirect_to login_path
-
-
-
   end
 
   private

@@ -2,10 +2,9 @@ class BookingsController < ApplicationController
 
   before_action :check_if_logged_in
 
-  # Create
-  def new
-  end
+  # CREATE
 
+  # this enables students to book classes
   def create
     u = @current_user.id
     d = DateTime.strptime(params[:date], '%s')
@@ -13,7 +12,7 @@ class BookingsController < ApplicationController
 
     e = Enrollment.find_by user_id: u, date: d, schedule_id: s
 
-    # avoid duplication
+    # avoid duplicating enrollments
     unless e.present?
 
       @enrollment = Enrollment.create(
@@ -24,17 +23,13 @@ class BookingsController < ApplicationController
 
     end
 
-    # avoid duplicates
-    # @current_user.classes_attending << s unless @current_user.classes_attending.include? s
-
     redirect_to bookings_path
 
   end
 
-  # read
-  def index
-  end
+  # READ
 
+  # homepage/"My classes" view
   def show
 
     #if student, show class enrollments/bookings
@@ -42,54 +37,44 @@ class BookingsController < ApplicationController
       |enrollment| enrollment['date']
     }
 
-    # @booking = @current_user.classes_attending
-    # User.second.enrollments.first.schedule.title
-
     # if instructor show classes that they are teaching
     @classes_teaching = @current_user.classes_teaching
 
 
   end
 
+# show number of students, and student names/emails for each class.
   def details
-    @date = DateTime.strptime(params[:date], '%s')
     s = params[:id]
+    @schedule = Schedule.find s
+
+    #Restricts access to class details to the instructor who created the class. Front-end restrictions also in place.
+    unless @current_user == @schedule.instructor
+      redirect_to schedule_path(s)
+      return
+    end
+
+    @date = DateTime.strptime(params[:date], '%s')
 
     @enrollments = Enrollment.where date: @date, schedule_id: s
-    @schedule = Schedule.find s
-    # raise 'hell'
 
-  end
+  end # end of details
 
-  # update
-  def edit
+  # UPDATE
 
-  end
 
-  def update
-  end
-
-  # delete
+  # DELETE
   def destroy
 
+    u = @current_user.id
+    d = DateTime.strptime(params[:date], '%s')
+    s = params[:id]
 
-
-    user_id = @current_user.id
-    date = DateTime.strptime(params[:date], '%s')
-    schedule_id = params[:id]
-
-    e = Enrollment.find_by user_id: user_id, date: date, schedule_id: schedule_id
+    e = Enrollment.find_by user_id: u, date: d, schedule_id: s
 
     if e.present?
       e.destroy
     end
-
-
-
-    # user = @current_user
-    # booking = Schedule.find params[:id]
-    #
-    # user.classes_attending.delete(booking)
 
     redirect_to bookings_path
 
@@ -97,3 +82,9 @@ class BookingsController < ApplicationController
 
 
 end
+
+
+# def destroy - use method below if only using a join table and not a join table that is also a model
+# user = @current_user
+# booking = Schedule.find params[:id]
+# user.classes_attending.delete(booking)

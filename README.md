@@ -10,11 +10,12 @@
 
 **Main Features**
 * Encrypted login for students and instructors
-* Students book and cancel classes
-* Instructors can create, edit and delete class
-* Can create reoccurring classes
+* Students can book and cancel yoga classes
+* Instructors can create, edit and delete yoga classes
+* A yoga class can be set to reoccur weekly  
 * Instructors can view students booked for each class
-* Displays google map for class location   
+* Displays google map for class location
+* Images can be uploaded to student/instructor profiles and instructors can upload an image for their class
 
 **Tech Used**
 * Ruby
@@ -24,6 +25,6 @@
 * HTML
 * CSS
 
-
 **List of bugs**
-* . . .
+* Reoccurring classes can only happen at weekly intervals
+* Design is not responsive
