@@ -97,12 +97,17 @@ nav li:hover{
   text-align: center;
 }
 
+.login {
+  height: 30em;
+  position: relative;
+}
+
 .blur {
   background-image: url("https://images.unsplash.com/photo-1489679124346-536a843e31ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
   filter: blur(1px);
   -webkit-filter: blur(1px);
-  height: 30em;
+  height: 100%;
 }
 
 
@@ -110,6 +115,18 @@ nav li:hover{
   background-color: rgba(0,0,0, 0.4);
   color: white;
   border: 3px solid #f1f1f1;
+  /* relative to parent */
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  /* this centers it, otherwise off center because it's looking at top left corner*/
+  transform: translate(-50%, -50%);
+  padding: 1em;
+
+}
+
+.nothingatall {
   position: relative;
   top: -20em;
   left: 37.5%;
@@ -119,7 +136,7 @@ nav li:hover{
   z-index: 2;
   width: 25%;
   height: auto;
-  padding: 1em 0 1em 1em;
+  padding: 1em;
 }
 
 
