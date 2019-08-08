@@ -1,13 +1,15 @@
 <div class="main">
   <h2>All Classes</h2>
 
+
+
   <% @schedules.each do |schedule| %>
 
 
-    <div>
-      <%= link_to schedule.title, schedule_path(schedule.id) %> | <%= l(schedule.start) %>
-    </div>
-
+  <div class="schedules-container">
+      <div class="schedules-item"><%= link_to schedule.title, schedule_path(schedule.id) %></div><div class="schedules-item"><%= l(schedule.start) %></div>
+  </div>
 
   <% end %>
+
 </div>

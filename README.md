@@ -18,13 +18,18 @@
 * Images can be uploaded to student/instructor profiles and instructors can upload an image for their class
 
 **Tech Used**
-* Ruby
+* Ruby 2.6.3
 * Ruby on Rails
 * Gems: pry-rails, cloudinary, rails 12 factor, geocoder, jquery
 * APIs: Google Maps JavaScript API, Google Geocoding API
 * HTML
 * CSS
+* Deployed to Heroku
 
 **List of bugs**
 * Reoccurring classes can only happen at weekly intervals
 * Design is not responsive
+
+**Future features**
+* Show page for instructors and students (only visible to instructors)
+* Integrating Stripe for purchasing yoga classes

@@ -6,19 +6,19 @@ class BookingsController < ApplicationController
 
   # this enables students to book classes
   def create
-    u = @current_user.id
-    d = DateTime.strptime(params[:date], '%s')
-    s = params[:id]
+    user_id = @current_user.id
+    date = DateTime.strptime(params[:date], '%s')
+    schedule_id = params[:id]
 
-    e = Enrollment.find_by user_id: u, date: d, schedule_id: s
+    e = Enrollment.find_by user_id: user_id, date: date, schedule_id: schedule_id
 
     # avoid duplicating enrollments
     unless e.present?
 
       @enrollment = Enrollment.create(
-        user_id: u,
-        date: d,
-        schedule_id: s
+        user_id: user_id,
+        date: date,
+        schedule_id: schedule_id
       )
 
     end
