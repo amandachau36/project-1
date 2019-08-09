@@ -156,10 +156,15 @@ nav li:hover{
   /* background-color: purple; */
 }
 
-.description {
-  width: 40%;
+.description-container {
+  display: flex;
+  /* width: 40%;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: top; */
+}
+
+.description-item {
+  width: 55%;
 }
 
 .classImg {
@@ -174,11 +179,25 @@ nav li:hover{
 }
 
 #map {
-  height: 400px;
-  width: 400px;
-  display: inline-block;
-  width: 60%;
+  height: 50vh;
+  /* width: 400px; */
+  /* display: inline-block; */
+  width: 45%;
   border-radius: 10px;
+  margin-top: 2%;
+}
+
+@media (min-width: 250px) and (max-width: 600px) {
+  #map {
+    width: 100%;
+  }
+  .description-item {
+    width: 100%;
+  }
+  .description-container {
+    flex-direction: column;
+  }
+
 }
 
 .schedules-container {
