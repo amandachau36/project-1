@@ -1,20 +1,23 @@
 <div class="main">
-  <h2> Account Details</h2>
+  <h2 class="account">ACCOUNT SETTINGS</h2>
 
-  <%= link_to 'Edit', edit_user_path(@user.id) %>
-  |
-  <%= link_to 'Delete Account', user_path(@user.id), method: 'delete' %>
+  <div class="btn book">
+    <%= link_to 'EDIT', edit_user_path(@user.id) %>
+  </div>
+  <div class="btn cancel">
+    <%= link_to 'DELETE ACCOUNT', user_path(@user.id), method: 'delete' %>
+  </div>
 
-  <p><strong>Name: </Strong><%= @user.name %></p>
-  <p><strong>Email: </Strong><%= @user.email %></p>
-  <p><strong>Instructor: </Strong><%= @user.is_instructor %></p>
+  <p><strong>Name: </Strong> &nbsp;  <%= @user.name %></p>
+  <p><strong>Email: </Strong> &nbsp; <%= @user.email %></p>
+  <p><strong>Instructor: </Strong> &nbsp; <%= @user.is_instructor %></p>
 
 
-
-  <p><strong>Password: </Strong>*******</p>
-
+  <p><strong>Password: </Strong> &nbsp; *******</p>
 
   <% if @user.image.present?  %>
     <%= cl_image_tag(@user.image, class: 'show' )  %>
   <% end %>
+
+
 </div>

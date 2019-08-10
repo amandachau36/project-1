@@ -12,41 +12,44 @@
 
 
 
-<%= form_for @schedule, html: {multipart:true} do |f| %>
+<%= form_for @schedule, html: {multipart:true, class: "form schedule"} do |f| %>
 
-<%= f.label :title %>
-<%= f.text_field :title %>
+
+<%= f.text_field :title, placeholder: "Title", class: 'form-input'   %>
 <br>
 
-<%= f.label :duration, 'Duration (min)' %>
-<%= f.text_field :duration %>
+
+<%= f.text_field :duration, placeholder: "Duration (min)", class: 'form-input' %>
 <br>
 
-<%= f.label :level %>
-<%= f.text_field :level %>
+<%= f.text_field :level, placeholder: "Level", class: 'form-input'  %>
 <br>
 
-<%= f.label :description %>
-<%= f.text_field :description %>
+
+<%= f.text_area :description, placeholder: "Describe your class!", rows: 10, class: 'form-input'  %>
+<br>
 <br>
 
 <%= f.label :start, 'Date and Time' %>
-<%= f.datetime_field :start %>
+<br>
+<%= f.datetime_field :start, class: 'form-input'  %>
 <br>
 
-<%= f.label :number_of_repeats, 'Number of times class reoccurs' %>
-<%= f.text_field :number_of_repeats %>
+
+
+<%= f.text_field :number_of_repeats, placeholder: "Number of times class reoccurs (eg. 0 for a single class)", class: 'form-input'  %>
 <br>
 
-<%= f.label :address %>
-<%= f.text_field :address %>
+
+<%= f.text_field :address, placeholder: "Address/Location", class: 'form-input'  %>
 <br>
 
-<%= f.label :image %>
+<%= f.label :image, "Upload class image", class: 'form-form'%>
 <%= f.cl_image_upload :image %>
 <br>
+<br>
 
 
-<%= f.submit %>
+<%= f.submit class: 'btn book submit' %>
 
 <% end %>

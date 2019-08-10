@@ -14,11 +14,11 @@
   </head>
   <body>
   <div>
-    <div>
-      <div class="sydneyYoga">
-        <h1>Sydney Yoga</h1>
-      </div><div class="logo">
+    <div class="header-container">
+      <div class="logo">
         <img src="https://www.pngkey.com/png/full/350-3500926_yoga-transparent-background-yoga-png.png" alt="logo" >
+      </div><div class="sydneyYoga">
+        <h1>Sydney Yoga</h1>
       </div>
     </div>
 
@@ -26,43 +26,43 @@
       <div id="leftNav">
         <ul>
           <% if @current_user.present? %>
-            <li><%= link_to 'My Classes', bookings_path %></li>
+            <li><%= link_to 'MY CLASSES', bookings_path %></li>
 
           <% end  %>
 
           <% if @current_user.present? && @current_user.is_instructor %>
-            <li><%= link_to 'Create New Class', new_schedule_path %></li>
+            <li><%= link_to 'ADD CLASS', new_schedule_path %></li>
 
           <% end %>
-            <li><%= link_to 'All Classes', schedules_path %></li>
+            <li><%= link_to 'ALL CLASSES', schedules_path %></li>
         </ul>
       </div><div id="rightNav">
         <ul>
           <% if @current_user.present? %>
-              <li>Welcome, <%= link_to @current_user.name, user_profile_path %></li>
+              <li>WELCOME, <%= link_to @current_user.name, user_profile_path %></li>
 
-              <li><%= link_to 'Logout', login_path, method: 'delete' %></li>
+              <li><%= link_to 'LOGOUT', login_path, method: 'delete' %></li>
 
             <% else %>
 
-              <li><%= link_to 'Login', login_path %></li>
+              <li><%= link_to 'LOGIN', login_path %></li>
 
-              <li><%= link_to 'Create new account', new_user_path %></li>
+              <li><%= link_to 'SIGN UP', new_user_path %></li>
           <% end %>
         </ul>
       </div>
     </nav>
   </div>
 
-
+  <!-- <div class="main"> -->
 
       <%= yield %>
-
+  <!-- </div> -->
 
 
 
   <footer>
-    &copy;2019 Karma Tree Co.
+    &copy; 2019 Karma Tree Co.
   </footer>
 
 
