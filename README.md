@@ -9,10 +9,10 @@
 <img alt="sydney yoga student page" src="/app/assets/images/student.png" width="500px">
 
 #### Yoga class - instructor view
-<img alt="sydney yoga instructor page" src="images/instructor.png" width="500px">
+<img alt="sydney yoga instructor page" src="/app/assets/images/instructor.png" width="500px">
 
 #### Add a new yoga class - instructors only (authorisation required)
-<img alt="sydney yoga instructor page" src="images/add_class.png" width="500px">
+<img alt="sydney yoga instructor page" src="/app/assets/images/add_class.png" width="500px">
 
 
 ## Project 1 for GA's WDI
