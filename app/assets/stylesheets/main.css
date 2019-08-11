@@ -31,24 +31,21 @@ a:hover {
 }
 
 .sydneyYoga{
-  width: 90%; */
+  width: 90%;
 }
 
 
 h1 {
-  /* padding-left: 0.3em; */
   font-family: 'Beth Ellen', cursive;
   margin: 0;
   color: rgb(61, 62, 62);
-  /* display: inline-block; */
-  /* font-size: 90%; */
 }
 
 .logo > img{
   /* height: 100%; */
   width: 100%;
   max-width: 4.5em;
-  /* text-align: left; */
+
 }
 
 .logo {
@@ -57,7 +54,7 @@ h1 {
 
 
 nav {
-  /* border: 1px solid orange; */
+
   background-color: rgba(252, 237, 38, 0.89);
   width: 100%;
   /* position: fixed; */
@@ -162,7 +159,7 @@ nav li:hover{
 }
 
 #loginBtn {
-  /* background-color: purple; */
+  background-color: transparent;
 }
 
 .description-container {
